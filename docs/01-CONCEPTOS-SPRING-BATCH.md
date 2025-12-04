@@ -1,8 +1,8 @@
-# 📘 Conceptos Fundamentales de Spring Batch
+# 📘 Conceptos Fundamentales de Spring Batch 6
 
 ## ¿Qué es Spring Batch?
 
-**Spring Batch** es un framework de código abierto para el procesamiento de grandes volúmenes de datos por lotes (batch processing). Es ideal para:
+**Spring Batch 6** es la versión más reciente del framework de código abierto para el procesamiento de grandes volúmenes de datos por lotes (batch processing). Esta versión requiere **Java 17+** (recomendado Java 21 LTS) y viene integrada con **Spring Boot 3.4**. Es ideal para:
 
 - Procesar millones de registros de forma eficiente
 - ETL (Extract, Transform, Load)
@@ -234,6 +234,57 @@ jobLauncher.run(job, params);
 - Los parámetros identifican una ejecución única
 - El mismo Job con los mismos parámetros no puede ejecutarse dos veces
 - Usar `RunIdIncrementer` para permitir re-ejecuciones
+
+## 🆕 Novedades en Spring Batch 6
+
+### Principales Cambios
+
+| Característica | Descripción |
+|---------------|-------------|
+| **Java 17+ requerido** | Mínimo Java 17, recomendado Java 21 LTS |
+| **Nuevo ChunkOrientedStepBuilder** | Configuración más clara y fluida de Steps |
+| **Método recover()** | Recuperación de Jobs fallidos abruptamente |
+| **APIs simplificadas** | Eliminación de métodos deprecados |
+| **Mejor rendimiento** | Procesamiento de chunks optimizado |
+| **Virtual Threads** | Soporte para hilos virtuales de Java 21 |
+
+### Ejemplo con ChunkOrientedStepBuilder
+
+```java
+@Bean
+public Step chunkOrientedStep(JobRepository jobRepository, 
+        PlatformTransactionManager transactionManager,
+        ItemReader<Cliente> itemReader, 
+        ItemProcessor<Cliente, ClienteProcesado> itemProcessor, 
+        ItemWriter<ClienteProcesado> itemWriter) {
+    
+    return new ChunkOrientedStepBuilder<Cliente, ClienteProcesado>(
+            "procesarClientesStep", jobRepository, transactionManager, 100)
+        .reader(itemReader)
+        .processor(itemProcessor)
+        .writer(itemWriter)
+        .build();
+}
+```
+
+### Recuperación de Jobs Fallidos
+
+```java
+@Autowired
+private JobOperator jobOperator;
+
+// Recuperar ejecución fallida abruptamente
+public void recuperarJobFallido(Long executionId) throws Exception {
+    jobOperator.recover(executionId);
+}
+```
+
+## 📚 Recursos Adicionales
+
+- [Documentación Oficial de Spring Batch 6](https://docs.spring.io/spring-batch/reference/)
+- [Guía de Migración a Spring Batch 6](https://github.com/spring-projects/spring-batch/wiki/Spring-Batch-6.0-Migration-Guide)
+- [Spring Batch - Baeldung Tutorials](https://www.baeldung.com/spring-batch)
+- [Spring Batch GitHub](https://github.com/spring-projects/spring-batch)
 
 ## 🔗 Siguiente: [02-ARQUITECTURA.md](02-ARQUITECTURA.md)
 

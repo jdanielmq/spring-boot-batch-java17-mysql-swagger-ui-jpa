@@ -1,9 +1,9 @@
 # Spring Batch Boot - Microservicio de Procesamiento por Lotes
 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen)
-![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.0-brightgreen)
+![Java](https://img.shields.io/badge/Java-21%20LTS-orange)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
-![Spring Batch](https://img.shields.io/badge/Spring%20Batch-5.x-green)
+![Spring Batch](https://img.shields.io/badge/Spring%20Batch-6.0-green)
 
 
 ## 👨‍💻 Autor
@@ -17,7 +17,7 @@ Este proyecto es de uso educativo y libre para aprendizaje.
 
 ## 📋 Descripción
 
-Este proyecto es un **microservicio de ejemplo** que demuestra cómo implementar **Spring Batch** con **Spring Boot 3** siguiendo una arquitectura empresarial. El servicio procesa clientes de forma masiva aplicando transformaciones de negocio.
+Este proyecto es un **microservicio de ejemplo** que demuestra cómo implementar **Spring Batch 6** con **Spring Boot 3.4** y **Java 21 (LTS)** siguiendo una arquitectura empresarial. El servicio procesa clientes de forma masiva aplicando transformaciones de negocio.
 
 ### 🎯 Objetivo
 
@@ -84,8 +84,8 @@ spring-batch-boot/
 
 ### Prerrequisitos
 
-- Java 17+
-- Maven 3.8+
+- Java 21+ (LTS recomendado)
+- Maven 3.9+
 - MySQL 8.0+
 
 ### 1. Configurar Base de Datos
@@ -162,12 +162,13 @@ Para entender en profundidad el proyecto, consulta los documentos en la carpeta 
 
 | Tecnología | Versión | Propósito |
 |------------|---------|-----------|
-| Spring Boot | 3.2.0 | Framework base |
-| Spring Batch | 5.x | Procesamiento por lotes |
-| Spring Data JPA | 3.x | Acceso a datos |
+| Java | 21 LTS | Lenguaje de programación |
+| Spring Boot | 3.4.0 | Framework base |
+| Spring Batch | 6.0 | Procesamiento por lotes |
+| Spring Data JPA | 3.4.x | Acceso a datos |
 | MySQL | 8.0 | Base de datos |
 | Lombok | 1.18.x | Reducir boilerplate |
-| SpringDoc OpenAPI | 2.3.0 | Documentación API |
+| SpringDoc OpenAPI | 2.7.0 | Documentación API |
 
 
 

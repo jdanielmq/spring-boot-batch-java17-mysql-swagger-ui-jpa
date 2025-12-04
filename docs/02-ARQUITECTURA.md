@@ -2,7 +2,7 @@
 
 ## Visión General
 
-Este proyecto implementa una **arquitectura empresarial por capas**, combinando Spring Batch para procesamiento por lotes con una API REST para control y monitoreo.
+Este proyecto implementa una **arquitectura empresarial por capas**, combinando **Spring Batch 6** con **Spring Boot 3.4** y **Java 25** para procesamiento por lotes con una API REST para control y monitoreo.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐

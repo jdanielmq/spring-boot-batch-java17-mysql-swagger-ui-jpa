@@ -2,13 +2,14 @@
 # DOCKERFILE - SPRING BATCH BOOT
 # ============================================================
 # Multi-stage build para crear una imagen optimizada
-# de la aplicación Spring Batch.
+# de la aplicación Spring Batch 6.
+# Actualizado para Java 21 LTS y Spring Boot 3.4.
 # ============================================================
 
 # ============================================
 # ETAPA 1: BUILD
 # ============================================
-FROM maven:3.9-eclipse-temurin-17-alpine AS builder
+FROM maven:3.9-eclipse-temurin-21-alpine AS builder
 
 WORKDIR /app
 
@@ -25,7 +26,7 @@ RUN mvn clean package -DskipTests
 # ============================================
 # ETAPA 2: RUNTIME
 # ============================================
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
@@ -39,6 +40,9 @@ COPY --from=builder /app/target/*.jar app.jar
 # Puerto expuesto
 EXPOSE 8080
 
-# Comando de ejecución
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Variables de entorno para optimización de JVM con Virtual Threads (Java 21+)
+ENV JAVA_OPTS="-XX:+UseZGC -XX:+ZGenerational"
+
+# Comando de ejecución con opciones de JVM optimizadas
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
 

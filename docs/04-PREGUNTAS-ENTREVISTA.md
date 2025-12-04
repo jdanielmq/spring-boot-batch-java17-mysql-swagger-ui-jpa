@@ -1,4 +1,4 @@
-# 🎯 Preguntas Frecuentes en Entrevistas sobre Spring Batch
+# 🎯 Preguntas Frecuentes en Entrevistas sobre Spring Batch 6
 
 ## Preguntas Básicas
 
@@ -258,9 +258,64 @@ public void beforeStep(StepExecution stepExecution) {
 4. **Menciona transacciones**: Spring Batch maneja transacciones por chunk
 5. **Habla de escalabilidad**: Menciona multi-threading, partitioning
 
+## Preguntas sobre Spring Batch 6
+
+### 14. ¿Qué novedades trae Spring Batch 6?
+
+**Respuesta:**
+> Spring Batch 6 introduce varias mejoras importantes:
+>
+> 1. **Requisito mínimo Java 17**: Compatible con versiones más recientes como Java 25
+> 2. **Nuevo ChunkOrientedStepBuilder**: Configuración más fluida
+> 3. **Método recover()**: Para recuperar jobs fallidos abruptamente
+> 4. **APIs simplificadas**: Eliminación de métodos deprecados
+> 5. **Mejor rendimiento**: Procesamiento de chunks optimizado
+>
+> ```java
+> // Nuevo estilo con ChunkOrientedStepBuilder
+> return new ChunkOrientedStepBuilder<Input, Output>(
+>         "stepName", jobRepository, transactionManager, chunkSize)
+>     .reader(reader)
+>     .processor(processor)
+>     .writer(writer)
+>     .build();
+> ```
+
+### 15. ¿Cómo recuperas un Job que falló abruptamente en Spring Batch 6?
+
+**Respuesta:**
+> Spring Batch 6 introduce el método `recover()` en `JobOperator`:
+>
+> ```java
+> @Autowired
+> private JobOperator jobOperator;
+>
+> public void recuperarJob(Long executionId) throws Exception {
+>     // Recupera la ejecución marcándola como fallida
+>     // y permitiendo su reinicio
+>     jobOperator.recover(executionId);
+> }
+> ```
+>
+> Esto es útil cuando un job termina de forma inesperada (crash del servidor,
+> kill del proceso) y queda en estado STARTED o STOPPING.
+
+### 16. ¿Qué versión de Java requiere Spring Batch 6?
+
+**Respuesta:**
+> Spring Batch 6 requiere **Java 17 como mínimo**, pero se recomienda usar
+> **Java 21 (LTS)** que es la versión con soporte a largo plazo. Esto permite 
+> aprovechar las nuevas características del lenguaje como:
+> - Records
+> - Pattern Matching
+> - Sealed Classes
+> - Virtual Threads (Java 21+)
+> - Nuevos garbage collectors (ZGC Generational)
+
 ## Recursos Adicionales
 
-- [Documentación Oficial de Spring Batch](https://docs.spring.io/spring-batch/docs/current/reference/html/)
+- [Documentación Oficial de Spring Batch 6](https://docs.spring.io/spring-batch/reference/)
+- [Guía de Migración a Spring Batch 6](https://github.com/spring-projects/spring-batch/wiki/Spring-Batch-6.0-Migration-Guide)
 - [Spring Batch - Baeldung Tutorials](https://www.baeldung.com/spring-batch)
 - [Spring Batch GitHub](https://github.com/spring-projects/spring-batch)
 
