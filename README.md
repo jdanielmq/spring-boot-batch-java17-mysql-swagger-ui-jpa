@@ -5,6 +5,16 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![Spring Batch](https://img.shields.io/badge/Spring%20Batch-5.x-green)
 
+
+## 👨‍💻 Autor
+
+Juan Daniel Muñoz Queupul
+
+## 📄 Licencia
+
+Proyecto de ejemplo para aprendizaje de Spring Batch.
+Este proyecto es de uso educativo y libre para aprendizaje.
+
 ## 📋 Descripción
 
 Este proyecto es un **microservicio de ejemplo** que demuestra cómo implementar **Spring Batch** con **Spring Boot 3** siguiendo una arquitectura empresarial. El servicio procesa clientes de forma masiva aplicando transformaciones de negocio.
@@ -159,11 +169,5 @@ Para entender en profundidad el proyecto, consulta los documentos en la carpeta 
 | Lombok | 1.18.x | Reducir boilerplate |
 | SpringDoc OpenAPI | 2.3.0 | Documentación API |
 
-## 👨‍💻 Autor
 
-Proyecto de ejemplo para aprendizaje de Spring Batch.
-
-## 📄 Licencia
-
-Este proyecto es de uso educativo y libre para aprendizaje.
 

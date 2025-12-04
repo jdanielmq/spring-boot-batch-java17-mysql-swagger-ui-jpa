@@ -1,0 +1,78 @@
+# ============================================================
+# DOCKER COMPOSE - SPRING BATCH BOOT
+# ============================================================
+# Este archivo configura los contenedores necesarios para
+# ejecutar el proyecto en un ambiente Docker.
+#
+# Uso:
+#   docker-compose up -d        # Iniciar contenedores
+#   docker-compose down         # Detener contenedores
+#   docker-compose logs -f      # Ver logs
+# ============================================================
+
+version: '3.8'
+
+services:
+  # ============================================
+  # MYSQL DATABASE
+  # ============================================
+  mysql:
+    image: mysql:8.0
+    container_name: spring-batch-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring_batch_db
+      MYSQL_USER: batch_user
+      MYSQL_PASSWORD: batch_password
+    ports:
+      - "3306:3306"
+    volumes:
+      # Persistir datos de MySQL
+      - mysql_data:/var/lib/mysql
+      # Script de inicialización
+      - ./scripts/crear-base-datos.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - spring-batch-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================
+  # SPRING BATCH APPLICATION
+  # ============================================
+  spring-batch-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-batch-app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      # Configuración de conexión a MySQL en Docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/spring_batch_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-batch-network
+
+# ============================================
+# NETWORKS
+# ============================================
+networks:
+  spring-batch-network:
+    driver: bridge
+
+# ============================================
+# VOLUMES
+# ============================================
+volumes:
+  mysql_data:
+    driver: local
+
