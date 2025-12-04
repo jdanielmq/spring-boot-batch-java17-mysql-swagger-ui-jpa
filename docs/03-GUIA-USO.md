@@ -5,13 +5,13 @@
 ### 1. Requisitos Previos
 
 Asegúrate de tener instalado:
-- Java 21 o superior (LTS recomendado)
+- Java 25 o superior (LTS)
 - Maven 3.9 o superior
 - MySQL 8.0 o superior
 
 Verificar instalaciones:
 ```bash
-java -version    # Debe mostrar Java 21+
+java -version    # Debe mostrar Java 25+
 mvn -version     # Debe mostrar Maven 3.9+
 mysql --version  # Debe mostrar MySQL 8.0+
 ```

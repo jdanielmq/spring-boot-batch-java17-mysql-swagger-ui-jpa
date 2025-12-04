@@ -2,7 +2,7 @@
 
 ## ¿Qué es Spring Batch?
 
-**Spring Batch 6** es la versión más reciente del framework de código abierto para el procesamiento de grandes volúmenes de datos por lotes (batch processing). Esta versión requiere **Java 17+** (recomendado Java 21 LTS) y viene integrada con **Spring Boot 3.4**. Es ideal para:
+**Spring Batch 6** es la versión más reciente del framework de código abierto para el procesamiento de grandes volúmenes de datos por lotes (batch processing). Esta versión requiere **Java 17+** (recomendado Java 25 LTS) y viene integrada con **Spring Boot 3.4**. Es ideal para:
 
 - Procesar millones de registros de forma eficiente
 - ETL (Extract, Transform, Load)
@@ -241,12 +241,12 @@ jobLauncher.run(job, params);
 
 | Característica | Descripción |
 |---------------|-------------|
-| **Java 17+ requerido** | Mínimo Java 17, recomendado Java 21 LTS |
+| **Java 17+ requerido** | Mínimo Java 17, recomendado Java 25 LTS |
 | **Nuevo ChunkOrientedStepBuilder** | Configuración más clara y fluida de Steps |
 | **Método recover()** | Recuperación de Jobs fallidos abruptamente |
 | **APIs simplificadas** | Eliminación de métodos deprecados |
 | **Mejor rendimiento** | Procesamiento de chunks optimizado |
-| **Virtual Threads** | Soporte para hilos virtuales de Java 21 |
+| **Virtual Threads** | Soporte para hilos virtuales de Java 21+ |
 
 ### Ejemplo con ChunkOrientedStepBuilder
 

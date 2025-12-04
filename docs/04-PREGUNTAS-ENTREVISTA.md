@@ -304,13 +304,13 @@ public void beforeStep(StepExecution stepExecution) {
 
 **Respuesta:**
 > Spring Batch 6 requiere **Java 17 como mínimo**, pero se recomienda usar
-> **Java 21 (LTS)** que es la versión con soporte a largo plazo. Esto permite 
-> aprovechar las nuevas características del lenguaje como:
-> - Records
-> - Pattern Matching
+> **Java 25 (LTS)** que es la versión más reciente con soporte a largo plazo. 
+> Esto permite aprovechar las nuevas características del lenguaje como:
+> - Records y Pattern Matching
 > - Sealed Classes
 > - Virtual Threads (Java 21+)
 > - Nuevos garbage collectors (ZGC Generational)
+> - Mejoras de rendimiento de Java 25
 
 ## Recursos Adicionales
 

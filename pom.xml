@@ -21,15 +21,29 @@
     <description>
         Proyecto de ejemplo de Spring Batch 6 con arquitectura empresarial.
         Incluye conexión a MySQL, controladores REST y documentación completa.
-        Requiere Java 21 (LTS) y Spring Boot 3.4.
+        Requiere Java 25 (LTS) y Spring Boot 3.4.
     </description>
     
     <!-- Propiedades del proyecto -->
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+    
+    <!-- Repositorios para Lombok edge (soporte Java 25) -->
+    <repositories>
+        <repository>
+            <id>projectlombok.org</id>
+            <url>https://projectlombok.org/edge-releases</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>projectlombok.org</id>
+            <url>https://projectlombok.org/edge-releases</url>
+        </pluginRepository>
+    </pluginRepositories>
     
     <!-- Dependencias del proyecto -->
     <dependencies>
@@ -77,10 +91,11 @@
         <!-- UTILIDADES                                   -->
         <!-- ============================================ -->
         
-        <!-- Lombok: Reduce código boilerplate -->
+        <!-- Lombok: Reduce código boilerplate (versión edge para Java 25) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>edge-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
         
@@ -142,6 +157,13 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>edge-SNAPSHOT</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>

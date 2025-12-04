@@ -1,7 +1,7 @@
 # Spring Batch Boot - Microservicio de Procesamiento por Lotes
 
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.0-brightgreen)
-![Java](https://img.shields.io/badge/Java-21%20LTS-orange)
+![Java](https://img.shields.io/badge/Java-25%20LTS-orange)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![Spring Batch](https://img.shields.io/badge/Spring%20Batch-6.0-green)
 
@@ -17,7 +17,7 @@ Este proyecto es de uso educativo y libre para aprendizaje.
 
 ## 📋 Descripción
 
-Este proyecto es un **microservicio de ejemplo** que demuestra cómo implementar **Spring Batch 6** con **Spring Boot 3.4** y **Java 21 (LTS)** siguiendo una arquitectura empresarial. El servicio procesa clientes de forma masiva aplicando transformaciones de negocio.
+Este proyecto es un **microservicio de ejemplo** que demuestra cómo implementar **Spring Batch 6** con **Spring Boot 3.4** y **Java 25 (LTS)** siguiendo una arquitectura empresarial. El servicio procesa clientes de forma masiva aplicando transformaciones de negocio.
 
 ### 🎯 Objetivo
 
@@ -84,7 +84,7 @@ spring-batch-boot/
 
 ### Prerrequisitos
 
-- Java 21+ (LTS recomendado)
+- Java 25+ (LTS)
 - Maven 3.9+
 - MySQL 8.0+
 
@@ -162,12 +162,12 @@ Para entender en profundidad el proyecto, consulta los documentos en la carpeta 
 
 | Tecnología | Versión | Propósito |
 |------------|---------|-----------|
-| Java | 21 LTS | Lenguaje de programación |
+| Java | 25 LTS | Lenguaje de programación |
 | Spring Boot | 3.4.0 | Framework base |
 | Spring Batch | 6.0 | Procesamiento por lotes |
 | Spring Data JPA | 3.4.x | Acceso a datos |
 | MySQL | 8.0 | Base de datos |
-| Lombok | 1.18.x | Reducir boilerplate |
+| Lombok | edge | Reducir boilerplate (Java 25 compatible) |
 | SpringDoc OpenAPI | 2.7.0 | Documentación API |
 
 
